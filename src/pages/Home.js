@@ -10,6 +10,12 @@ class Home extends Component{
         }
     }
 
+    async handleSeach(){
+        this.setState({
+            player_name: await this.$store.dispatch()  
+        })
+    }
+
     handleClicked(id){
         this.setState({
             spid: id
@@ -37,7 +43,7 @@ class Home extends Component{
                         </span>
                     </div>
                     <div>
-                        <button type="button" value={array[i].id} onClick={} className="player_btn">선택</button>
+                        <button type="button" value={array[i].id} onClick={this.handleClicked(array[i].id)} className="player_btn">선택</button>
                     </div>
                 </span>
             );
