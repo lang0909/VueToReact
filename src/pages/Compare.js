@@ -89,6 +89,32 @@ class Compare extends Component{
         return arr;
     }
 
+    handleCompareButton(){
+        let brr = [];
+        for(i=0;i<this.state.playerkeep.length;i++){
+            brr.push(
+                <div>
+                    <div>
+                        <span>
+                            <img 
+                                src={require(`/players/${this.state.playerkeep[i]}`)}
+                                className="back_img"
+                                style={{backgroundImage=require(`/season_background/${this.state.playerkeep[i].substring(0,3)}.png`)}}
+                            />
+                        </span>
+                        <span>
+                            <img
+                                src={require(`/season/${this.state.playerkeep[i].substring(0,3)}.JPG`)}
+                                className="img_cont"
+                            />
+                        </span>
+                    </div>
+                </div>
+            );
+        }
+        return brr;
+    }
+
     render(){
         return(
             <div>
@@ -103,7 +129,14 @@ class Compare extends Component{
                     {this.state.player_name.length == 0 ?
                     <></>:
                     this.handleSearchResult(this.state.player_name)}
-                </div>       
+                </div>
+                <div>
+                    {this.state.playerkeep.length == 0 ?
+                    <></>:
+                    (<hr />,
+                    <button type="button" onClick={this.handleCompare()} className="compare_btn">비교하기</button>,
+                    this.handleCompareButton())}
+                </div>
             </div>
         );
     }
